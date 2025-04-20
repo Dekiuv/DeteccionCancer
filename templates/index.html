@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Predictor Cáncer Colon</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='img/Logo.ico') }}">
+</head>
+<body>
+    <header>
+        <div class="logo">
+            <a href=""><img src="{{ url_for('static', filename='img/logo.png') }}" alt="Logo" width="40"></a>
+            <span>Predictor Cáncer Colon</span>
+        </div>
+        <form method="POST" class="search-form">
+            <input type="number" name="user_id" placeholder="Buscar ID Paciente" min="1" max="10000" required>
+            <button type="submit">Buscar</button>
+        </form>
+    </header>
+
+    <main>
+        <h2>
+            {% if paciente is not none %}
+                INFORME MÉDICO DEL PACIENTE {{ user_id }}
+            {% else %}
+                INTRODUCE UN ID DE PACIENTE
+            {% endif %}
+        </h2>
+
+        <div class="dashboard">
+            <section class="informe">
+                <h3>📋 Datos clínicos</h3>
+                {% if paciente is not none %}
+                    <table>
+                        <tr><th>Variable</th><th>Valor</th></tr>
+                        {% for key, value in paciente.items() %}
+                        <tr>
+                            <td>{{ key }}</td>
+                            <td>{{ value }}</td>
+                        </tr>
+                        {% endfor %}
+                    </table>
+                {% else %}
+                    <p>No hay datos para mostrar.</p>
+                {% endif %}
+            </section>
+
+            <section class="imagen">
+                <h3>🖼️ Imagen médica</h3>
+                {% if imagen_b64 %}
+                    <img src="data:image/jpeg;base64,{{ imagen_b64 }}" width="250">
+                {% else %}
+                    <p>No hay imagen disponible.</p>
+                {% endif %}
+            </section>
+        </div>
+
+        {% if confidence_final is not none %}
+        <h3>🎯 Resultados de los Modelos</h3>
+
+        <p>
+        Predicción Datos Clínicos:
+        {% if prediccion_datos == "✅ Benigno" %}
+            ✅ {{ (confidence_datos * 100) | round(2) }}% de ser Benigno
+        {% else %}
+            ⚠️ {{ (confidence_datos * 100) | round(2) }}% de ser Maligno
+        {% endif %}
+        </p>
+
+        <p>
+        Predicción Imagen Médica:
+        {% if confidence_imagen >= 0.5 %}
+            ✅ {{ (confidence_imagen * 100) | round(2) }}% de ser Benigno
+        {% else %}
+            ⚠️ {{ ((1 - confidence_imagen) * 100) | round(2) }}% de ser Maligno
+        {% endif %}
+        </p>
+
+        <h3>🔮 Predicción Final Combinada</h3>
+
+        <div class="progress-container">
+            <div class="progress-bar" id="progressBar"></div>
+        </div>
+
+        <p id="confidence-text"></p>
+
+        <script>
+            let confidence = {{ (confidence_final * 100) | round(2) }};
+            let progressBar = document.getElementById("progressBar");
+            let confidenceText = document.getElementById("confidence-text");
+
+            progressBar.style.width = confidence + "%";
+            confidenceText.innerText = confidence + "% de probabilidad de ser benigno";
+
+            if (confidence >= 70) {
+                progressBar.style.backgroundColor = "green";
+            } else if (confidence >= 40) {
+                progressBar.style.backgroundColor = "orange";
+            } else {
+                progressBar.style.backgroundColor = "red";
+            }
+        </script>
+        {% endif %}
+    </main>
+
+    <footer>
+        <p>Grupo 3: Johnny Liao, Joan Petit y Diego Roque</p>
+    </footer>
+</body>
+</html>

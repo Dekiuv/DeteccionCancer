@@ -1,0 +1,141 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+/* HEADER */
+header {
+    background-color: #003366;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 1.5rem;
+}
+
+.search-form input, .search-form button {
+    padding: 8px;
+    border: none;
+    border-radius: 5px;
+}
+
+.search-form input {
+    width: 200px;
+}
+
+.search-form button {
+    background-color: white;
+    cursor: pointer;
+}
+
+/* MAIN */
+main {
+    padding: 20px;
+    background-color: #00aaff;
+    color: white;
+}
+
+h2 {
+    text-align: left;
+    margin-left: 20px;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+    height: 365px;
+}
+
+.informe, .imagen{
+    background: white;
+    color: black;
+    padding: 20px;
+    border-radius: 8px;
+    width: 45%;
+    text-align: center;
+}
+
+/* TABLA */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    border: 1px solid #ccc;
+    padding: 10px;
+}
+
+/* RESULTADO */
+.resultado {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.success {
+    color: green;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+.error {
+    color: red;
+    font-weight: bold;
+    font-size: 1.2rem;
+}
+
+/* FOOTER */
+footer {
+    background-color: #003366;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    font-size: 0.8rem;
+}
+
+.progress-container {
+    width: 100%;
+    background-color: #ddd;
+    border-radius: 20px;
+    margin: 20px 0;
+    height: 30px;
+    overflow: hidden;
+}
+
+.progress-bar {
+    height: 100%;
+    width: 0;
+    background-color: green;
+    text-align: center;
+    line-height: 30px;
+    color: white;
+    font-weight: bold;
+    border-radius: 20px;
+    transition: width 1s ease-in-out;
+}
+
+#confidence-text {
+    text-align: center;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 10px;
+}

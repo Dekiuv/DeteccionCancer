@@ -75,7 +75,7 @@ history = model.fit(
 # ========================
 # GUARDAR MODELO
 # ========================
-model.save("modelo_mobilenet_colon.keras")
+model.save("modelo_imagen.keras")
 print("✅ Modelo guardado como modelo_mobilenet_colon.keras")
 
 # ========================
