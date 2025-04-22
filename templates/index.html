@@ -60,23 +60,24 @@
 
         <p>
         Predicción Datos Clínicos:
-        {% if prediccion_datos == "✅ Benigno" %}
-            ✅ {{ (confidence_datos * 100) | round(2) }}% de ser Benigno
+        {% if confidence_datos >= 0.5 %}
+            ✅ {{ (confidence_datos * 100) | round(2) }}% de probabilidad de ser Benigno
         {% else %}
-            ⚠️ {{ (confidence_datos * 100) | round(2) }}% de ser Maligno
+            ⚠️ {{ (confidence_datos * 100) | round(2) }}% de probabilidad de ser Benigno
         {% endif %}
         </p>
 
         <p>
         Predicción Imagen Médica:
         {% if confidence_imagen >= 0.5 %}
-            ✅ {{ (confidence_imagen * 100) | round(2) }}% de ser Benigno
+            ✅ {{ (confidence_imagen * 100) | round(2) }}% de probabilidad de ser Benigno
         {% else %}
-            ⚠️ {{ ((1 - confidence_imagen) * 100) | round(2) }}% de ser Maligno
+            ⚠️ {{ (confidence_imagen * 100) | round(2) }}% de probabilidad de ser Benigno
         {% endif %}
         </p>
 
-        <h3>🔮 Predicción Final Combinada</h3>
+
+        <h3>🔮 Predicción Final</h3>
 
         <div class="progress-container">
             <div class="progress-bar" id="progressBar"></div>
