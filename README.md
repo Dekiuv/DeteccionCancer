@@ -7,7 +7,7 @@ Este proyecto utiliza **datos clínicos** e **imágenes médicas** para predecir
 ## 📂 Estructura del Proyecto
 
 ```plaintext
-SistemaRecomendacion/
+Predicción de Cáncer de Colon/
 ├── data_exploring.ipynb       # Exploración de datos y limpieza
 ├── EntrenoDatos.py            # Entreno datos clínicos
 ├── EntrenoImage.py            # Entreno imagenes
