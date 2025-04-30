@@ -8,37 +8,33 @@ Este proyecto utiliza **datos clínicos** e **imágenes médicas** para predecir
 
 ```plaintext
 SistemaRecomendacion/
-├── data_loader.py             # Carga de los CSV
-├── Creadorcluster.csv         # Segmentación de usuarios por K-Means
-├── Codo+grafico.csv           # Visualizar grafico codo y distribución de usuarios en clusters
-├── entreno.py                 # Entrena un modelo SVD por cada cluster
-├── ver_metricas_modelos.py    # Muestra las métricas (accuracy, precision, recall, F1) de cada modelo entrenado.
-├── recomendador.py            # Recomendación para un usuario y cluster.
-├── nlp.py                     # Permite buscar productos similares usando procesamiento de lenguaje natural (TF-IDF).
-├── market_basket.py           # Reglas de asociación (Apriori)
-├── app.py                     # Backend Flask principal
-├── index.html                 # Interfaz HTML principal
-├── styles.css                 # Estilos CSS
-├── script.js                  # Lógica del frontend en JavaScript
+├── data_exploring.ipynb       # Exploración de datos y limpieza
+├── EntrenoDatos.py            # Entreno datos clínicos
+├── EntrenoImage.py            # Entreno imagenes
+├── app.py                     # Backend aplicación
 │
-├── Image/                     # Carpeta con imagenes de la página web
-│   ├── MAPA.png
-│   ├── github.png
-│   └── supermercado.png
+├── static/                    # Carpeta con complementos página web
+│   ├── css/
+│   ├── img/
+│   └── js/
+│
+├── templates/                 # Estructura HTML
+│   └── index.html
+│
+├── Image/                     # Carpeta con imagenes de colon
+│   ├── Benigno/
+│   └── Maligno/
 │
 ├── modelos_por_clusters/      # Carpeta con modelos enternados
-│   ├── modelo_svd_cluster0.pkl
-│   ├── modelo_svd_cluster1.pkl
-│   ├── modelo_svd_cluster2.pkl
-│   └── modelo_svd_cluster3.pkl
+│   ├── modelo_datos.pkl
+│   └── modelo_imagenes.keres
 │
 ├── data/                      # Carpeta con los CSV
-│   ├── Aisles.csv
-│   ├── departments.csv
-│   ├── order_products__prior.csv
-│   ├── order_products__train.csv
-│   ├── orders_cleaned.csv
-│   └── products.csv
+│   ├── analisis_cancer.csv
+│   ├── historial_medico_imagenes.csv
+│   ├── historial_medico.csv
+│   ├── merged_dummies.csv
+│   └── merged.csv
 │
 ├── .gitignore                 # Archivos y carpetas ignoradas por Git
 └── README.md                  # Documentación del proyecto
