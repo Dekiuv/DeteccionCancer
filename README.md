@@ -6,6 +6,43 @@ Este proyecto utiliza **datos clínicos** e **imágenes médicas** para predecir
 
 ## 📂 Estructura del Proyecto
 
+```plaintext
+SistemaRecomendacion/
+├── data_loader.py             # Carga de los CSV
+├── Creadorcluster.csv         # Segmentación de usuarios por K-Means
+├── Codo+grafico.csv           # Visualizar grafico codo y distribución de usuarios en clusters
+├── entreno.py                 # Entrena un modelo SVD por cada cluster
+├── ver_metricas_modelos.py    # Muestra las métricas (accuracy, precision, recall, F1) de cada modelo entrenado.
+├── recomendador.py            # Recomendación para un usuario y cluster.
+├── nlp.py                     # Permite buscar productos similares usando procesamiento de lenguaje natural (TF-IDF).
+├── market_basket.py           # Reglas de asociación (Apriori)
+├── app.py                     # Backend Flask principal
+├── index.html                 # Interfaz HTML principal
+├── styles.css                 # Estilos CSS
+├── script.js                  # Lógica del frontend en JavaScript
+│
+├── Image/                     # Carpeta con imagenes de la página web
+│   ├── MAPA.png
+│   ├── github.png
+│   └── supermercado.png
+│
+├── modelos_por_clusters/      # Carpeta con modelos enternados
+│   ├── modelo_svd_cluster0.pkl
+│   ├── modelo_svd_cluster1.pkl
+│   ├── modelo_svd_cluster2.pkl
+│   └── modelo_svd_cluster3.pkl
+│
+├── data/                      # Carpeta con los CSV
+│   ├── Aisles.csv
+│   ├── departments.csv
+│   ├── order_products__prior.csv
+│   ├── order_products__train.csv
+│   ├── orders_cleaned.csv
+│   └── products.csv
+│
+├── .gitignore                 # Archivos y carpetas ignoradas por Git
+└── README.md                  # Documentación del proyecto
+```
 
 ---
 
